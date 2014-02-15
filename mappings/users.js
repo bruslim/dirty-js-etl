@@ -7,7 +7,7 @@ exports.Map = function(config) {
 		useEmptyPassword = config.options.clearPasswords;	
 	return {
 		destination: 'users',
-		source: 'nq_etl_Users',
+		source: 'etl_Users',
 		useMerge: true,		
 		killWhere: 'orig_id IS NOT NULL',
 		message: 'migrating NON-DUPLICATE users',
