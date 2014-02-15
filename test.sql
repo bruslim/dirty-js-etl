@@ -53,10 +53,10 @@ PRINT('');
 
 PRINT('======== BEGIN PASS 1 of 2 ========');
 PRINT('');
-PRINT('==== Merging [destination_db].[dbo].[users] with [source_db].[dbo].[nq_etl_Users] =====');
-PRINT('INFO: migrating NON-DUPLICATE users; and non-netquarry users by @netquarry.com');
+PRINT('==== Merging [destination_db].[dbo].[users] with [source_db].[dbo].[etl_Users] =====');
+PRINT('INFO: migrating NON-DUPLICATE users');
 MERGE [destination_db].[dbo].[users] AS D
-USING [source_db].[dbo].[nq_etl_Users] AS S
+USING [source_db].[dbo].[etl_Users] AS S
    ON D.[orig_id] = S.[UserID]
 WHEN MATCHED THEN
     UPDATE SET
@@ -115,10 +115,10 @@ OUTPUT $action,
        Inserted.[pin_code];
 PRINT('');
 
-PRINT('==== Merging [destination_db].[dbo].[user_roles] with [source_db].[dbo].[nq_etl_Users] =====');
+PRINT('==== Merging [destination_db].[dbo].[user_roles] with [source_db].[dbo].[etl_Users] =====');
 PRINT('INFO: defaulted role for imported to Users');
 MERGE [destination_db].[dbo].[user_roles] AS D
-USING [source_db].[dbo].[nq_etl_Users] AS S
+USING [source_db].[dbo].[etl_Users] AS S
    ON D.[orig_user_id] = S.[UserID]
 WHEN MATCHED THEN
     UPDATE SET
@@ -145,10 +145,10 @@ PRINT('======= END OF PASS 1 of 2 ========');
 PRINT('');
 PRINT('======== BEGIN PASS 2 of 2 ========');
 PRINT('');
-PRINT('==== Merging [destination_db].[dbo].[users] with [source_db].[dbo].[nq_etl_Users] =====');
-PRINT('INFO: migrating NON-DUPLICATE users; and non-netquarry users by @netquarry.com');
+PRINT('==== Merging [destination_db].[dbo].[users] with [source_db].[dbo].[etl_Users] =====');
+PRINT('INFO: migrating NON-DUPLICATE users; and non-netquarry users by');
 MERGE [destination_db].[dbo].[users] AS D
-USING [source_db].[dbo].[nq_etl_Users] AS S
+USING [source_db].[dbo].[etl_Users] AS S
    ON D.[orig_id] = S.[UserID]
 WHEN MATCHED THEN
     UPDATE SET
@@ -207,10 +207,10 @@ OUTPUT $action,
        Inserted.[pin_code];
 PRINT('');
 
-PRINT('==== Merging [destination_db].[dbo].[user_roles] with [source_db].[dbo].[nq_etl_Users] =====');
+PRINT('==== Merging [destination_db].[dbo].[user_roles] with [source_db].[dbo].[etl_Users] =====');
 PRINT('INFO: defaulted role for imported to Users');
 MERGE [destination_db].[dbo].[user_roles] AS D
-USING [source_db].[dbo].[nq_etl_Users] AS S
+USING [source_db].[dbo].[etl_Users] AS S
    ON D.[orig_user_id] = S.[UserID]
 WHEN MATCHED THEN
     UPDATE SET
