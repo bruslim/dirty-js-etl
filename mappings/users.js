@@ -10,7 +10,7 @@ exports.Map = function(config) {
 		source: 'nq_etl_Users',
 		useMerge: true,		
 		killWhere: 'orig_id IS NOT NULL',
-		message: 'migrating NON-DUPLICATE users; and non-netquarry users by @netquarry.com',
+		message: 'migrating NON-DUPLICATE users',
 		columns: {
 			'orig_id': mappr.MergeOn('UserID'),
 			'orig_admin': mappr.DirectCopy('Admin'),
